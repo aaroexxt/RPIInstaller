@@ -25,7 +25,7 @@ trap 'abort' 0;
 py3=false;
 pypkg="";
 while true; do
-    read -p "Do you want to use Python 2.7 or Python 3.4 to install OpenCV (answer 3 or 2 to select)?" ans;
+    read -p "Do you want to use Python 2.7 or Python 3.4 to install OpenCV (answer 3 or 2 to select)? " ans;
     case $ans in
         [3]* ) py3="true"; echo "Python 3 selected."; pypkg=$(ls -l /usr/local/lib/python3.4/site-packages/); break;;
         [2]* ) py3="false"; echo "Python 2.7 selected."; pypkg=$(ls -l /usr/local/lib/python2.7/site-packages/); break;;
