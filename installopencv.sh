@@ -2,6 +2,7 @@
 echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-";
 echo "Welcome to the OpenCV automated installer script V2, by Aaron Becker.";
 echo "Commands originally from: https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/";
+echo "This script will download, compile, and install OpenCV.";
 echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-";
 
 abort()
@@ -15,7 +16,7 @@ abort()
     exit 1;
 }
 
-set -e;
+set -e -u;
 
 if [[ $(id -u) -ne 0 ]]
   then echo "Sorry, but it appears that you didn't run this script as root. Please run it as a root user!";

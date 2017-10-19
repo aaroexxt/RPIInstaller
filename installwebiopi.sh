@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-";
 echo "Welcome to the WebIOPi automated installer script V1, by Aaron Becker.";
+echo "This script will install WebIOPI on your machine.";
 echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-";
 
 abort()
@@ -14,7 +15,7 @@ abort()
     exit 1;
 }
 
-set -e;
+set -e -u;
 
 if [[ $(id -u) -ne 0 ]]
   then echo "Sorry, but it appears that you didn't run this script as root. Please run it as a root user!";
