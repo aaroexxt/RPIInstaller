@@ -22,18 +22,31 @@ if [[ $(id -u) -ne 0 ]]
   exit 1;
 fi
 trap 'abort' 0;
-
-echo "Step 1/5: Downloading WebIOPi files...";
-
-echo "Step 2/5: Extracting from archive...";
-tar xvzf WebIOPi-x.y.z.tar.gz
-
-echo "Step 3/5: Downloading patch file...";
-
-echo "Step 4/5: Installing WebIOPi...";
-
-echo "Step 5/5: Setting webiopi boot options...";
-
+echo "Step 1/7: Installing required packages...";
+sudo apt-get update;
+sudo apt-get upgrade;
+sudo apt-get install -y avahi-daemon xdotool weavedconnectd;
+echo "Installing packages successful.";
+echo "Step 2/7: Creating directories for file storage...";
+sudo mkdir /home/pi/webiopi;
+cd /home/pi/webiopi;
+mkdir python;
+mkdir html;
+echo "Making directories was successful.";
+echo "Step 3/7: Downloading WebIOPi files...";
+cd /home/pi;
+curl -O WebIOPi-0.7.1.tar.gz https://downloads.sourceforge.net/project/webiopi/WebIOPi-0.7.1.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fwebiopi%2Ffiles%2F&ts=1508385100&use_mirror=astuteinternet;
+echo "Step 4/7: Extracting from archive...";
+tar xvzf WebIOPi-0.7.1.tar.gz
+echo "Step 5/7: Downloading patch file...";
+cd WebIOPI-0.7.1;
+wget https://raw.githubusercontent.com/doublebind/raspi/master/webiopi-pi2bplus.patch;
+sudo patch -p1 -i webiopi-pi2bplus.patch;
+echo "Patch of WebIOPi successful.";
+echo "Step 6/7: Installing WebIOPi...";
+sudo ./setup.sh;
+echo "Step 7/7: Setting webiopi boot options...";
+sudo update-rc.d webiopi defaults;
 echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-";
 echo "This installation of WebIOPi is finished. Thanks for using my script!";
 echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-";

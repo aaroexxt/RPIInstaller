@@ -14,9 +14,10 @@ abort()
 '
     echo "An error occurred :( Exiting..." >&2
     exit 1;
-    echo "Dumping log...";
 
 }
+
+MAXSCRIPTTIME=86400;
 
 set -e -u;
 
@@ -95,6 +96,8 @@ if [ "$installall" = "true" ]; then
         echo "File running: $file";
         if ! [ "$file" = "install.sh" ]; then
             sudo bash "$file";
+            TASK_PID=$!
+            sleep MAXSCRIPTTIME
         fi
     done
     shopt -u nullglob;

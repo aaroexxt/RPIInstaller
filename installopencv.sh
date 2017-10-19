@@ -33,8 +33,17 @@ while true; do
         * ) echo "Please answer a 3 or 2.";;
     esac
 done
+while true; do
+    read -p "OpenCV takes a lot of space on the SD card. Do you want to remove WolframEngine to free up 700mb? It can be easily reinstalled later by using the command: sudo apt-get install wolfram-engine. (This is mostly for people with smaller SD cards.) " ans;
+    case $ans in
+        [Yy]* ) echo "WolframEngine will be removed."; sudo apt-get purge wolfram-engine; break;;
+        [Nn]* ) echo "WolframEngine will not be removed."; break;;
+        * ) echo "Please answer yes or no (or just y or n).";;
+    esac
+done
 echo "Step: 1/12: Installing packages...";
 sudo apt-get update;
+sudo apt-get upgrade;
 sudo apt-get install -y build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libgtk2.0-dev libatlas-base-dev gfortran python2.7-dev python3-dev;
 echo "Installed packages for opencv successfully.";
 cd ~;
