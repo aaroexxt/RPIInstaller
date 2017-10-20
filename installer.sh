@@ -104,7 +104,7 @@ if [ "$installall" = "true" ]; then
     echo "All installer scripts have been run successfully.";
 else
     echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-";
-    echo "Your machine is now ready to run all installer scripts.";
+    echo "Your machine is now ready to run all installer scripts. If you are not currently in the directory where the RPIInstaller folder is located, navigate there. Then, run the script that you would like to use, using sudo bash ./filenamehere.sh. (Without period at end) Thank you for using RPIInstaller!";
 fi
 END=$(date +%s);
 echo -n "Time: ";
