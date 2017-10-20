@@ -37,7 +37,8 @@ echo "Step 3/7: Downloading WebIOPi files...";
 cd /home/pi;
 curl -O WebIOPi-0.7.1.tar.gz https://downloads.sourceforge.net/project/webiopi/WebIOPi-0.7.1.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fwebiopi%2Ffiles%2F&ts=1508385100&use_mirror=astuteinternet;
 echo "Step 4/7: Extracting from archive...";
-tar xvzf WebIOPi-0.7.1.tar.gz
+tar xvzf WebIOPi-0.7.1.tar.gz;
+echo "Archive extraction successful.";
 echo "Step 5/7: Downloading patch file...";
 cd WebIOPI-0.7.1;
 wget https://raw.githubusercontent.com/doublebind/raspi/master/webiopi-pi2bplus.patch;
@@ -45,7 +46,9 @@ sudo patch -p1 -i webiopi-pi2bplus.patch;
 echo "Patch of WebIOPi successful.";
 echo "Step 6/7: Installing WebIOPi...";
 sudo ./setup.sh;
-echo "Step 7/7: Setting webiopi boot options...";
+echo "Step 7/7: Setting webiopi boot options and configuring new home directory (/home/pi/webiopi/html)...";
+#Add replace line in config for new webiopi home dir
+#sudo sed -i 's/.*/insert_new_here/' file.txt
 sudo update-rc.d webiopi defaults;
 echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-";
 echo "This installation of WebIOPi is finished. Thanks for using my script!";

@@ -96,8 +96,7 @@ if [ "$installall" = "true" ]; then
         echo "File running: $file";
         if ! [ "$file" = "install.sh" ]; then
             sudo bash "$file";
-            TASK_PID=$!
-            sleep MAXSCRIPTTIME
+            #sh -c '(sleep $MAXSCRIPTTIME; kill "$$" || echo "WARNING: No process found with number $$") & exec sleep 1'
         fi
     done
     shopt -u nullglob;
