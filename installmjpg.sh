@@ -34,7 +34,7 @@ while true; do
 done
 echo "Step 1/2: Installing required packages...";
 sudo apt-get update;
-sudo apt-get upgrade;
+sudo apt-get upgrade -y;
 sudo apt-get install -y kmod-video-uvc python-openssl fswebcam mjpg-streamer;
 echo "Installed packages successfully.";
 echo "Step 2/2: Creating alias 'startmjpg'...";

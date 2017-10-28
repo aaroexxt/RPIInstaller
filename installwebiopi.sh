@@ -24,7 +24,7 @@ fi
 trap 'abort' 0;
 echo "Step 1/7: Installing required packages...";
 sudo apt-get update;
-sudo apt-get upgrade;
+sudo apt-get upgrade -y;
 sudo apt-get install -y avahi-daemon xdotool weavedconnectd;
 echo "Installing packages successful.";
 echo "Step 2/7: Creating directories for file storage...";
