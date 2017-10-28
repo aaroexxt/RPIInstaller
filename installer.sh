@@ -79,13 +79,14 @@ if ! [ -d "RPIInstaller" ]; then
     sudo git clone https://github.com/aaroexxt/RPIInstaller.git;
 else
     while true; do
-    read -p "RPIInstaller directory already exists. Would you like to replace it with a new copy? " ans;
-    case $ans in
-        [Yy]* ) echo "Downloading new copy..."; sudo rm -r "RPIInstaller"; sudo git clone https://github.com/aahaxor/RPIInstaller.git; break;;
-        [Nn]* ) echo "Not downloading new copy. This may cause issues if there is scripts that you don't want run in the folder.";  break;;
-        * ) echo "Please answer yes or no (or just y or n).";;
-    esac
-done
+        read -p "RPIInstaller directory already exists. Would you like to replace it with a new copy? " ans;
+        case $ans in
+            [Yy]* ) echo "Downloading new copy..."; sudo rm -r "RPIInstaller"; sudo git clone https://github.com/aahaxor/RPIInstaller.git; break;;
+            [Nn]* ) echo "Not downloading new copy. This may cause issues if there is scripts that you don't want run in the folder.";  break;;
+            * ) echo "Please answer yes or no (or just y or n).";;
+        esac
+    done
+fi
 cd RPIInstaller;
 echo "Installer files downloaded successfully.";
 if [ "$installall" = "true" ]; then
