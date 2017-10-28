@@ -75,7 +75,7 @@ echo "Step 2/5: Downloading Installer files...";
 cd $dir;
 if ! [ -d "RPIInstaller" ]; then
     echo "RPIInstaller directory doesn't exist. Downloading fresh...";
-    sudo git clone https://github.com/aahaxor/RPIInstaller.git;
+    sudo git clone https://github.com/aaroexxt/RPIInstaller.git;
 else
     while true; do
     read -p "RPIInstaller directory already exists. Would you like to replace it with a new copy? " ans;
