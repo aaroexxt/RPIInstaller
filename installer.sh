@@ -28,12 +28,11 @@ fi
 trap 'abort' 0;
 
 START=$(date +%s);
-elapsedseconds=0;
 installall="false";
 dir="";
 hdirallow="true";
 while true; do
-    echo ""; read -p "What directory do you want the installer files to be located in? (Defaults to /home/pi if nothing entered): " ans;
+    echo ""; read -r -p "What directory do you want the installer files to be located in? (Defaults to /home/pi if nothing entered): " ans;
     if [ "$ans" = "" ] || [ "$ans" = " " ]; then
         if [ "$hdirallow" = "true" ]; then
             echo "Default directory selected. Testing default directory (just in case)...";
@@ -61,7 +60,7 @@ while true; do
 done
 dir=${dir%/}; #remove trailing slash
 while true; do
-    echo ""; read -p "Do you want to run all install scripts automatically? " ans;
+    echo ""; read -r -p "Do you want to run all install scripts automatically? " ans;
     case $ans in
         [Yy]* ) echo "Automatic package install selected."; installall="true"; break;;
         [Nn]* ) echo "Manual package install selected."; installall="false"; break;;
@@ -70,16 +69,16 @@ while true; do
 done
 echo "Step 1/5: Installing required packages...";
 sudo apt-get install -y git;
-#old package cmd which doesnt exist;
+#old package cmd which doesn't exist;
 echo "Packages installed successfully.";
 echo "Step 2/5: Downloading Installer files...";
-cd $dir;
+cd "$dir";
 if ! [ -d "RPIInstaller" ]; then
     echo "RPIInstaller directory doesn't exist. Downloading fresh...";
     sudo git clone https://github.com/aaroexxt/RPIInstaller.git;
 else
     while true; do
-        read -p "RPIInstaller directory already exists. Would you like to replace it with a new copy? " ans;
+        read -r -p "RPIInstaller directory already exists. Would you like to replace it with a new copy? " ans;
         case $ans in
             [Yy]* ) echo "Downloading new copy..."; sudo rm -r "RPIInstaller"; sudo git clone https://github.com/aahaxor/RPIInstaller.git; break;;
             [Nn]* ) echo "Not downloading new copy. This may cause issues if there is scripts that you don't want run in the folder.";  break;;
