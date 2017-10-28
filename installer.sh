@@ -69,7 +69,8 @@ while true; do
     esac
 done
 echo "Step 1/5: Installing required packages...";
-sudo apt-get install -y git cmd;
+sudo apt-get install -y git;
+#old package cmd which doesnt exist;
 echo "Packages installed successfully.";
 echo "Step 2/5: Downloading Installer files...";
 cd $dir;
