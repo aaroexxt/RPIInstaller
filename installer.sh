@@ -95,7 +95,7 @@ if [ "$installall" = "true" ]; then
     for file in $filesdir
     do
         echo "File running: $file";
-        if ! [ "$file" = "install.sh" ]; then
+        if ! [[ "$file" == *"installer.sh"* ]]; then
             #FIX BUG WHERE INSTALLER FILE IS RUN
             sudo bash "$file";
             #sh -c '(sleep $MAXSCRIPTTIME; kill "$$" || echo "WARNING: No process found with number $$") & exec sleep 1'
