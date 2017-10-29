@@ -1,7 +1,7 @@
 #!/bin/bash
 clear;
 echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-";
-echo "Welcome to the RPIInstaller automated installer script V1, by Aaron Becker.";
+echo "Welcome to the RPIInstaller automated installer script V3, by Aaron Becker.";
 echo "This script will install all other scripts and packages necessary to run RPIInstaller in full.";
 echo "~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-";
 
