@@ -89,7 +89,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D BUILD_EXAMPLES=ON ..;
 echo "Successfully set up build of opencv.";
 echo "Step 10/12: Compiling opencv (this might take 1hr+ so be patient!)...";
-make -j4;
+make;
 echo "Successfully compiled OpenCV!";
 echo "Step 11/12: Installing opencv from compiled scripts..."
 sudo make install;

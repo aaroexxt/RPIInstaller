@@ -28,14 +28,20 @@ sudo apt-get upgrade -y;
 sudo apt-get install -y avahi-daemon xdotool weavedconnectd;
 echo "Installing packages successful.";
 echo "Step 2/7: Creating directories for file storage...";
-sudo mkdir /home/pi/webiopi;
-cd /home/pi/webiopi;
-mkdir python;
-mkdir html;
+if ! [ -d "/home/pi/webiopi" ]; then
+    sudo mkdir /home/pi/webiopi;
+    cd /home/pi/webiopi;
+    if ! [ -d "/home/pi/webiopi/python" ]; then
+        mkdir python;
+    fi
+    if ! [ -d "/home/pi/webiopi/html" ]; then
+        mkdir html;
+    fi
+fi
 echo "Making directories was successful.";
 echo "Step 3/7: Downloading WebIOPi files...";
 cd /home/pi;
-curl -O WebIOPi-0.7.1.tar.gz https://downloads.sourceforge.net/project/webiopi/WebIOPi-0.7.1.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fwebiopi%2Ffiles%2F&ts=1508385100&use_mirror=astuteinternet;
+curl -O WebIOPi-0.7.1.tar.gz https://downloads.sourceforge.net/project/webiopi/WebIOPi-0.7.1.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fwebiopi%2Ffiles%2F&ts=1509411325&use_mirror=iweb;
 echo "Step 4/7: Extracting from archive...";
 tar xvzf WebIOPi-0.7.1.tar.gz;
 echo "Archive extraction successful.";
