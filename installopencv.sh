@@ -44,7 +44,11 @@ done
 echo "Step: 1/12: Installing packages...";
 sudo apt-get update;
 sudo apt-get upgrade -y;
-sudo apt-get install -y build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libgtk2.0-dev libatlas-base-dev gfortran python2.7-dev python3-dev;
+if sudo apt-get install -y build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libgtk2.0-dev libatlas-base-dev gfortran python2.7-dev python3-dev ; then
+    echo "Install worked first try, dependencies not required to install with -f.";
+else
+    echo "Install command failed. Falling back to correcting dependencies..."; sudo apt-get -f -y install; echo "Dependencies corrected (hopefully). Retrying command..."; sudo apt-get install -y build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libgtk2.0-dev libatlas-base-dev gfortran python2.7-dev python3-dev;
+fi
 echo "Installed packages for opencv successfully.";
 cd ~;
 echo "Step 2/12: Downloading opencv installer file...";
